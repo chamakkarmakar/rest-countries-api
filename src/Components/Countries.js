@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { Container } from 'react-bootstrap';
 import Country from './Country';
+import Filter from './Filter';
+
 
 const Countries = () => {
     const [countries, setCountries] = useState([]);
+    const [q, setQ] = useState("");
+
 
     useEffect(() => {
         const fetchCountries = async () => {
@@ -13,11 +17,21 @@ const Countries = () => {
         }
         fetchCountries();
     }, [])
+
     return (
         <Container fluid>
+            <Filter
+                countries={countries}
+                setCountries={setCountries}
+                q={q}
+                setQ={setQ}
+            />
+
             <div className='row'>
                 {
-                    countries.map((country, index) => <Country country={country}></Country>
+                    countries.filter(country => {
+                        return q.toLowerCase() === " " ? country : country.name.common.toLowerCase().includes(q)
+                    }).map((country, index) => <Country key={index} country={country}></Country>
                     )
                 }
 

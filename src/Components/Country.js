@@ -8,9 +8,9 @@ const Country = ({country}) => {
             <Card.Body>
                 <Card.Title>{country.name.common}</Card.Title>
                 <Card.Text>
-                    <p><b>Population:</b> {country.population} <br />
-                        <b>Region:</b> {country.region} <br />
-                        <b>Capital:</b> {country.capital}</p>
+                    <b>Population:</b> {country.population} <br />
+                    <b>Region:</b> {country.region} <br />
+                    <b>Capital:</b> {country.capital} <br />
                 </Card.Text>
             </Card.Body>
         </Card>
