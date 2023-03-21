@@ -1,4 +1,5 @@
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import Countries from './Components/Countries';
 import Header from './Components/Header';
 

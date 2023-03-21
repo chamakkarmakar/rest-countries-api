@@ -1,11 +1,9 @@
 import React from 'react'
-import './style.css'
 
 const Header = () => {
     return (
-        <div className='header'>
+        <div className=''>
             <h1>Where are you from?</h1>
-            
         </div>
     )
 }
