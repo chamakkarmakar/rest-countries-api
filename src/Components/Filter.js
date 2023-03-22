@@ -28,9 +28,9 @@ const Filter = ({ setCountries, q, setQ }) => {
             desc: "Oceania",
         },
     ]
-    
+
     const handleFilter = async (region) => {
-        if (region === undefined) {
+        if (region === undefined || region === "All") {
             const res = await fetch("https://restcountries.com/v3.1/all")
             const data = await res.json();
             setCountries(data);
@@ -46,40 +46,30 @@ const Filter = ({ setCountries, q, setQ }) => {
     useEffect(() => {
         handleFilter();
         // eslint-disable-next-line
-    },[])
+    }, [])
     return (
         <div className='mx-5 d-flex justify-content-between'>
             <Form>
-                {/* <input
-                    className='w-auto border-none'
+                <Form.Control
+                    className='w-auto shadow bg-body-tertiary rounded'
                     type="search"
                     name="search"
                     autoComplete='off'
                     placeholder='search country'
                     value={q}
                     onChange={e => setQ(e.target.value)}
-                /> */}
-                <Form.Control 
-                 className='w-auto shadow bg-body-tertiary rounded'
-                 type="search"
-                 name="search"
-                 autoComplete='off'
-                 placeholder='search country'
-                 value={q}
-                 onChange={e => setQ(e.target.value)}
                 />
             </Form>
             <div>
-                <select
-                    className='w-auto'
-                    name="region"
+                <Form.Select
+                    className='w-full shadow bg-body-tertiary rounded'
+                    value={regions.desc}
                     onChange={e => handleFilter(e.target.value)}
-                    value={regions.desc}>
+                >
                     {
                         regions.map((region, index) => <option key={index} value={region.desc}>{region.name}</option>)
                     }
-
-                </select>
+                </Form.Select>
             </div>
         </div>
     )
