@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { Form } from 'react-bootstrap'
 
-const Filter = ({ setCountries, q, setQ }) => {
+const Filter = ({ setCountries, q, setQ, setIsLoad }) => {
     const regions = [
         {
             name: "Filter by region",
@@ -39,6 +39,7 @@ const Filter = ({ setCountries, q, setQ }) => {
             const url = `https://restcountries.com/v3.1/region/${region}`
             const res = await fetch(url)
             const data = await res.json()
+            setIsLoad(true)
             setCountries(data)
         }
         console.log(region);
@@ -48,10 +49,10 @@ const Filter = ({ setCountries, q, setQ }) => {
         // eslint-disable-next-line
     }, [])
     return (
-        <div className='mx-5 d-flex justify-content-between'>
-            <Form>
+        <div className='mx-5 d-flex flex-md-row flex-column justify-content-between '>
+            <Form className='my-md-0 my-2'>
                 <Form.Control
-                    className='w-auto shadow bg-body-tertiary rounded'
+                    className='w-md-auto shadow bg-body-tertiary rounded'
                     type="search"
                     name="search"
                     autoComplete='off'
@@ -60,7 +61,7 @@ const Filter = ({ setCountries, q, setQ }) => {
                     onChange={e => setQ(e.target.value)}
                 />
             </Form>
-            <div>
+            <div className='my-md-0 my-2'>
                 <Form.Select
                     className='w-full shadow bg-body-tertiary rounded'
                     value={regions.desc}

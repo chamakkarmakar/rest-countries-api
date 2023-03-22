@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { useParams,Link } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
+import { ArrowSmallLeftIcon } from '@heroicons/react/24/solid'
 
 const CountryInfo = () => {
     const [country, setCountry] = useState([])
@@ -19,33 +20,36 @@ const CountryInfo = () => {
     }, [name])
     return (
 
-        <div className=''>
-            <Link to="/" className='text-dark text-decoration-none shadow p-3 mb-5 bg-body-tertiary rounded'>Back</Link>
-            <div className="container shadow-lg p-3 mb-5 bg-body-tertiary rounded card mb-3" style={{ maxWidth: "540px" }}>
-            {
-                country.map((count, index) =>
-                    <div key={index} className="row g-0">
-                        <div className="col-md-4">
-                            <img src={count.flags.png} className="img-fluid rounded-start" alt={name} />
-                        </div>
-                        <div className="col-md-8">
-                            <div className="card-body">
-                                <h5 className="card-title">{name}</h5>
-                                <p>
-                                    <b>Population:</b> {count.population} <br />
-                                    <b>Region:</b> {count.region} <br />
-                                    <b>Subregion:</b> {count.subregion} <br />
-                                    <b>Capital:</b> {count.capital} <br />
-                                </p>
-                               
+        <div className='container'>
+            <Link to="/" className='ms-5 mb-5 text-dark text-decoration-none shadow p-3 bg-body-tertiary rounded'>
+                <ArrowSmallLeftIcon style={{width:'20px', height: '20px'}}></ArrowSmallLeftIcon>
+                Back
+            </Link>
+            <div className="mx-auto my-5 shadow-lg p-3 bg-body-tertiary rounded card w-75">
+                {
+                    country.map((count, index) =>
+                        <div key={index} className="row g-0">
+                            <div className="col-md-6">
+                                <img src={count.flags.png} style={{width: '100%', height: '100%'}} className="img-fluid rounded-start" alt={name} />
                             </div>
-                        </div>
-                        
-                    </div>
-                )
-            }
+                            <div className="col-md-6 px-3 py-5">
+                                <div className="card-body">
+                                    <h3 className="card-title">{name}</h3>
+                                    <p>
+                                        <b>Population:</b> {count.population} <br />
+                                        <b>Region:</b> {count.region} <br />
+                                        <b>Subregion:</b> {count.subregion} <br />
+                                        <b>Capital:</b> {count.capital} <br />
+                                    </p>
 
-        </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    )
+                }
+
+            </div>
         </div>
 
     )
