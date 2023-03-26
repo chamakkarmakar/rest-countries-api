@@ -13,7 +13,6 @@ function App() {
         <Route path='/' element={<Countries />}></Route>
         <Route path='/countries' element={<Countries />}></Route>
         <Route path='/countries/:name' element={<CountryInfo />}></Route>
-
       </Routes>
     </div>
   );

@@ -7,6 +7,7 @@ const CountryInfo = () => {
     const { name } = useParams()
 
     useEffect(() => {
+        document.title = `Country | ${name}`
         const fetchCountryData = async () => {
             const response = await fetch(
                 `https://restcountries.com/v3.1/name/${name}`
