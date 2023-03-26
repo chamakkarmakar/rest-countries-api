@@ -4,7 +4,7 @@ import Country from './Country';
 import Filter from './Filter';
 
 
-const Countries = () => {
+const Countries = ({mode}) => {
     const [countries, setCountries] = useState([]);
     const [q, setQ] = useState("");
     const [isLoad, setIsLoad] = useState(false);
@@ -20,8 +20,6 @@ const Countries = () => {
         fetchCountries();
         
     }, [])
-
-    
 
     return (
         <Container fluid>
@@ -42,7 +40,11 @@ const Countries = () => {
                         {
                             countries.filter(country => {
                                 return q.toLowerCase() === " " ? country : country.name.common.toLowerCase().includes(q)
-                            }).map((country, index) => <Country key={index} country={country}></Country>
+                            }).map((country, index) => <Country 
+                            key={index} 
+                            country={country}
+                            mode={mode}
+                            ></Country>
                             )
                         }
 
