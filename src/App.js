@@ -24,7 +24,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Countries mode={mode} />}></Route>
         <Route path='/countries' element={<Countries />}></Route>
-        <Route path='/countries/:name' element={<CountryInfo />}></Route>
+        <Route path='/countries/:name' element={<CountryInfo mode={mode} />}></Route>
       </Routes>
     </div>
   );

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { ArrowSmallLeftIcon } from '@heroicons/react/24/solid'
 
-const CountryInfo = () => {
+const CountryInfo = ({ mode }) => {
     const [country, setCountry] = useState([])
     const { name } = useParams()
 
@@ -16,22 +16,22 @@ const CountryInfo = () => {
             console.log(country);
             setCountry(country)
         }
-
         fetchCountryData()
     }, [name])
     return (
-
-        <div className='container'>
-            <Link to="/" className='ms-5 mb-5 text-dark text-decoration-none shadow p-3 bg-body-tertiary rounded'>
-                <ArrowSmallLeftIcon style={{width:'20px', height: '20px'}}></ArrowSmallLeftIcon>
-                Back
-            </Link>
-            <div className="mx-auto my-5 shadow-lg p-3 bg-body-tertiary rounded card w-75">
+        <div className={`${mode}`} style={{ paddingBottom: '250px' }}>
+            <div className='mt-5'>
+                <Link to="/" className={`ms-5 my-5 text-decoration-none shadow p-3 rounded ${mode === 'dark' ? 'text-dark' : 'text-light bg-dark'}`}>
+                    <ArrowSmallLeftIcon style={{ width: '20px', height: '20px' }}></ArrowSmallLeftIcon>
+                    Back
+                </Link>
+            </div>
+            <div className={`mx-auto my-5 shadow-lg p-3 rounded card w-75 ${mode === 'dark' ? 'text-dark bg-body-tertiary' : 'text-light bg-dark'}`}>
                 {
                     country.map((count, index) =>
                         <div key={index} className="row g-0">
                             <div className="col-md-6">
-                                <img src={count.flags.png} style={{width: '100%', height: '100%'}} className="img-fluid rounded-start" alt={name} />
+                                <img src={count.flags.png} className="img-fluid w-100 h-100 rounded-start" alt={name} />
                             </div>
                             <div className="col-md-6 px-3 py-5">
                                 <div className="card-body">
