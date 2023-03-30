@@ -16,7 +16,7 @@ function App() {
      }
   }
   return (
-    <div className={`${mode}`}>
+    <div className={`${mode}`} style={{ paddingBottom: '500px' }}>
       <Header 
       mode={mode}
       toggleMode={toggleMode}

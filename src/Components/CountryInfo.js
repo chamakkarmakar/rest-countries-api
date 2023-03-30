@@ -19,7 +19,7 @@ const CountryInfo = ({ mode }) => {
         fetchCountryData()
     }, [name])
     return (
-        <div className={`${mode}`} style={{ paddingBottom: '250px' }}>
+        <div className={`${mode}`} style={{ paddingBottom: '300px' }}>
             <div className='mt-5'>
                 <Link to="/" className={`ms-5 my-5 text-decoration-none shadow p-3 rounded ${mode === 'dark' ? 'text-dark' : 'text-light bg-dark'}`}>
                     <ArrowSmallLeftIcon style={{ width: '20px', height: '20px' }}></ArrowSmallLeftIcon>

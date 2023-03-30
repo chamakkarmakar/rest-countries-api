@@ -32,7 +32,7 @@ const Countries = ({mode}) => {
             />
             {
                 !isLoad ?
-                    <div className="position-relative">
+                    <div className="position-relative" style={{ paddingBottom: '550px' }}>
                         <Spinner className="mt-5 position-absolute start-50" animation="grow" />
                     </div>
                     :
